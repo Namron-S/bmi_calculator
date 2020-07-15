@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'BMI Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
       home: MyHomePage(title: 'BMI Calculator'),
     );
@@ -42,6 +42,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(title),
         ),
@@ -82,6 +83,7 @@ class MyHomePage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: RaisedButton(
+                            color: Colors.blueGrey,
                             onPressed: () {
                               int weight, height;
                               String weightStr = weightController.text,
@@ -106,6 +108,7 @@ class MyHomePage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: RaisedButton(
+                          color: Colors.blueGrey,
                           onPressed: () {
                             clearFields(
                                 weight: true,

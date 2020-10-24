@@ -56,7 +56,7 @@ class MyHomePage extends StatelessWidget {
                           padding: const EdgeInsets.all(5.0),
                           child: TextField(
                             inputFormatters: [
-                              WhitelistingTextInputFormatter.digitsOnly
+                              FilteringTextInputFormatter.digitsOnly,
                             ],
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
@@ -68,7 +68,7 @@ class MyHomePage extends StatelessWidget {
                         padding: const EdgeInsets.all(5.0),
                         child: TextField(
                           inputFormatters: [
-                            WhitelistingTextInputFormatter.digitsOnly
+                            FilteringTextInputFormatter.digitsOnly,
                           ],
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(

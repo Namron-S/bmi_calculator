@@ -81,11 +81,11 @@ class MyHomePage extends StatelessWidget {
                     TableRow(children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: RaisedButton(
-                            color: Colors.blueGrey,
+                        child: ElevatedButton(
+                            //color: Colors.blueGrey,
                             onPressed: () {
                               int weight, height;
-                              String weightStr = weightController.text,
+                              final String weightStr = weightController.text,
                                   heightStr = heightController.text;
                               if (weightStr.isEmpty || heightStr.isEmpty) {
                                 showAlertDialog(context,
@@ -96,8 +96,8 @@ class MyHomePage extends StatelessWidget {
                               weight = int.parse(weightStr);
                               height = int.parse(heightStr);
 
-                              double bmi = calcBmi(weight, height);
-                              String bmiStr =
+                              final double bmi = calcBmi(weight, height);
+                              final String bmiStr =
                                   'BMI: ${bmi.toStringAsFixed(2)}'; //round bmi to two decimal digits
                               bmiController.text = bmiStr;
                               bmiDescController.text = getBmiDesc(bmi);
@@ -106,8 +106,8 @@ class MyHomePage extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: RaisedButton(
-                          color: Colors.blueGrey,
+                        child: ElevatedButton(
+                          //color: Colors.blueGrey,
                           onPressed: () {
                             clearFields(
                                 weight: true,
@@ -152,7 +152,7 @@ class MyHomePage extends StatelessWidget {
 double calcBmi(int weight, int height) {
   double result = -1;
 
-  double heightInM = height / 100;
+  final double heightInM = height / 100;
   result = weight / pow(heightInM, 2);
 
   return result;
@@ -190,7 +190,7 @@ Future<void> showAlertDialog(BuildContext context, String msg) {
         title: Text('Info'),
         content: Text(msg),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             child: Text('Ok'),
             onPressed: () {
               Navigator.of(context).pop();

@@ -2,9 +2,14 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MyApp(
+      key: UniqueKey(),
+    ));
 
 class MyApp extends StatelessWidget {
+  const MyApp({
+    required Key key,
+  }) : super(key: key);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: MyHomePage(title: 'BMI Calculator'),
+      home: MyHomePage(
+        title: 'BMI Calculator',
+        key: UniqueKey(),
+      ),
     );
   }
 }
@@ -26,7 +34,7 @@ class MyHomePage extends StatelessWidget {
   final bmiController = TextEditingController();
   final bmiDescController = TextEditingController();
 
-  MyHomePage({this.title, Key key}) : super(key: key);
+  MyHomePage({required this.title, required Key key}) : super(key: key);
 
   void clearFields(
       {bool weight = false,
@@ -47,9 +55,9 @@ class MyHomePage extends StatelessWidget {
         ),
         body: Center(
             child: Container(
-                margin: EdgeInsets.only(left: 5.0, right: 5.0),
+                margin: const EdgeInsets.only(left: 5.0, right: 5.0),
                 child: Table(
-                  defaultColumnWidth: FractionColumnWidth(0.45),
+                  defaultColumnWidth: const FractionColumnWidth(0.45),
                   children: <TableRow>[
                     TableRow(children: <Widget>[
                       Padding(
@@ -59,7 +67,7 @@ class MyHomePage extends StatelessWidget {
                               FilteringTextInputFormatter.digitsOnly,
                             ],
                             keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Weight in kg'),
                             controller: weightController,
@@ -71,7 +79,7 @@ class MyHomePage extends StatelessWidget {
                             FilteringTextInputFormatter.digitsOnly,
                           ],
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Height in cm'),
                           controller: heightController,
@@ -102,7 +110,7 @@ class MyHomePage extends StatelessWidget {
                               bmiController.text = bmiStr;
                               bmiDescController.text = getBmiDesc(bmi);
                             },
-                            child: Text('Calculate BMI')),
+                            child: const Text('Calculate BMI')),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -115,7 +123,7 @@ class MyHomePage extends StatelessWidget {
                                 bmi: true,
                                 bmiDesc: true);
                           },
-                          child: Text("Clear"),
+                          child: const Text("Clear"),
                         ),
                       ),
                     ]),
@@ -126,7 +134,7 @@ class MyHomePage extends StatelessWidget {
                           minLines: 2,
                           maxLines: 2,
                           enabled: false,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               border: OutlineInputBorder(), labelText: 'BMI'),
                           controller: bmiController,
                         ),
@@ -137,7 +145,7 @@ class MyHomePage extends StatelessWidget {
                           minLines: 2,
                           maxLines: 2,
                           enabled: false,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'BMI Description'),
                           controller: bmiDescController,
@@ -187,11 +195,11 @@ Future<void> showAlertDialog(BuildContext context, String msg) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('Info'),
+        title: const Text('Info'),
         content: Text(msg),
         actions: <Widget>[
           TextButton(
-            child: Text('Ok'),
+            child: const Text('Ok'),
             onPressed: () {
               Navigator.of(context).pop();
             },
